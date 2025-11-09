@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {}
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+
