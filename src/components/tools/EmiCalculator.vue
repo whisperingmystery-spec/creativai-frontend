@@ -1,35 +1,36 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { formatCurrency, supportedCurrencies } from '@/utils/currency'
 import type { CurrencyCode } from '@/utils/currency'
+import { calculateEmi, calculateMonthlyRate } from '@/utils/tools/finance'
+import { readLocal, writeLocal } from '@/utils/persist'
 
-const principal = ref<number | null>(500000)
-const annualRate = ref<number | null>(9.0) // % per annum
-const tenureMonths = ref<number | null>(60)
-const currency = ref<CurrencyCode>('USD')
+type EmiForm = { principal: number; annualRate: number; tenureMonths: number; currency: CurrencyCode }
+const saved = readLocal<EmiForm>('emi.form', { principal: 500000, annualRate: 9, tenureMonths: 60, currency: 'USD' as CurrencyCode })
+const principal = ref<number | null>(saved.principal)
+const annualRate = ref<number | null>(saved.annualRate) // % per annum
+const tenureMonths = ref<number | null>(saved.tenureMonths)
+const currency = ref<CurrencyCode>(saved.currency)
 
-const monthlyRate = computed(() => {
-  if (!annualRate.value) return 0
-  return (annualRate.value / 12) / 100
-})
+const monthlyRate = computed(() => calculateMonthlyRate(annualRate.value || 0))
 
 const valid = computed(() => {
   return (principal.value ?? 0) > 0 && (tenureMonths.value ?? 0) > 0 && (annualRate.value ?? 0) >= 0
 })
 
-const emi = computed(() => {
-  if (!valid.value) return 0
-  const P = principal.value as number
-  const N = tenureMonths.value as number
-  const R = monthlyRate.value
-  if (R === 0) return +(P / N).toFixed(2)
-  const factor = Math.pow(1 + R, N)
-  return +((P * R * factor) / (factor - 1)).toFixed(2)
-})
+const emi = computed(() => calculateEmi(principal.value || 0, annualRate.value || 0, tenureMonths.value || 0))
 
 const totalPayment = computed(() => +(emi.value * (tenureMonths.value || 0)).toFixed(2))
 const totalInterest = computed(() => +((totalPayment.value - (principal.value || 0)).toFixed(2)))
 
+watch([principal, annualRate, tenureMonths, currency], () => {
+  writeLocal<EmiForm>('emi.form', {
+    principal: principal.value || 0,
+    annualRate: annualRate.value || 0,
+    tenureMonths: tenureMonths.value || 0,
+    currency: currency.value
+  })
+}, { deep: true })
 type Row = { month: number; interest: number; principal: number; balance: number }
 const amortization = computed<Row[]>(() => {
   if (!valid.value) return []
