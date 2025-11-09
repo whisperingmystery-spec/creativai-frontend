@@ -18,6 +18,14 @@ export default defineConfig({
       output: {
         inlineDynamicImports: true
       }
+    },
+    worker: {
+      format: 'es',
+      rollupOptions: {
+        output: {
+          inlineDynamicImports: true
+        }
+      }
     }
   }
 })
