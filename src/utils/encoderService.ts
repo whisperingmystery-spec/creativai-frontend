@@ -5,23 +5,39 @@ let jpegEncoderPromise: Promise<any> | null = null
 let webpEncoderPromise: Promise<any> | null = null
 let avifEncoderPromise: Promise<any> | null = null
 
+const loadEncoder = async (format: 'jpeg' | 'webp' | 'avif') => {
+  const map = {
+    jpeg: { local: '@jsquash/jpeg', remote: 'https://cdn.jsdelivr.net/npm/@jsquash/jpeg@1.6.0/+esm' },
+    webp: { local: '@jsquash/webp', remote: 'https://cdn.jsdelivr.net/npm/@jsquash/webp@1.5.0/+esm' },
+    avif: { local: '@jsquash/avif', remote: 'https://cdn.jsdelivr.net/npm/@jsquash/avif@1.3.0/+esm' }
+  } as const
+
+  const entry = map[format]
+
+  if (import.meta.env.PROD) {
+    return import(entry.remote).then((mod) => mod.encode)
+  }
+
+  return import(entry.local).then((mod) => mod.encode)
+}
+
 const loadJpegEncoder = async () => {
   if (!jpegEncoderPromise) {
-    jpegEncoderPromise = import('@jsquash/jpeg').then((mod) => mod.encode)
+    jpegEncoderPromise = loadEncoder('jpeg')
   }
   return jpegEncoderPromise
 }
 
 const loadWebpEncoder = async () => {
   if (!webpEncoderPromise) {
-    webpEncoderPromise = import('@jsquash/webp').then((mod) => mod.encode)
+    webpEncoderPromise = loadEncoder('webp')
   }
   return webpEncoderPromise
 }
 
 const loadAvifEncoder = async () => {
   if (!avifEncoderPromise) {
-    avifEncoderPromise = import('@jsquash/avif').then((mod) => mod.encode)
+    avifEncoderPromise = loadEncoder('avif')
   }
   return avifEncoderPromise
 }
