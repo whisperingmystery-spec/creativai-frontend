@@ -1,8 +1,8 @@
 <script setup>
 import { extractMetaFromDraft } from '@/utils/markdown'
 
-// Import raw markdown drafts from src/blog
-const modules = import.meta.glob('@/blog/*.md', { as: 'raw', eager: true })
+// Import raw markdown drafts from src/blog (Vite 5+: use query/import)
+const modules = import.meta.glob('@/blog/*.md', { query: '?raw', import: 'default', eager: true })
 const posts = Object.entries(modules).map(([path, raw]) => {
   const meta = extractMetaFromDraft(raw)
   return {

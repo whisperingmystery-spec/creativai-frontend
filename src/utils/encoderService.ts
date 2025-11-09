@@ -15,7 +15,11 @@ const loadEncoder = async (format: 'jpeg' | 'webp' | 'avif') => {
   const entry = map[format]
 
   if (import.meta.env.PROD) {
-    return import(entry.remote).then((mod) => mod.encode)
+    // Prevent Vite/Rollup from analyzing the remote URL import
+    // so it loads at runtime in the browser.
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return import(/* @vite-ignore */ entry.remote).then((mod) => mod.encode)
   }
 
   return import(entry.local).then((mod) => mod.encode)
