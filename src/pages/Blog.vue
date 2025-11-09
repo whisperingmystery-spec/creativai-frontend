@@ -1,8 +1,8 @@
 <script setup>
 import { extractMetaFromDraft } from '@/utils/markdown'
 
-// Import raw markdown drafts from CAIA_BLOG
-const modules = import.meta.glob('/CAIA_BLOG/*.md', { as: 'raw', eager: true })
+// Import raw markdown drafts from src/blog
+const modules = import.meta.glob('@/blog/*.md', { as: 'raw', eager: true })
 const posts = Object.entries(modules).map(([path, raw]) => {
   const meta = extractMetaFromDraft(raw)
   return {

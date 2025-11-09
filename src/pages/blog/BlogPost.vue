@@ -6,7 +6,7 @@ import { basicMarkdownToHtml, extractMetaFromDraft } from '@/utils/markdown'
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
 
-const modules = import.meta.glob('/CAIA_BLOG/*.md', { as: 'raw', eager: true })
+const modules = import.meta.glob('@/blog/*.md', { as: 'raw', eager: true })
 const entries = Object.entries(modules).map(([path, raw]) => {
   const meta = extractMetaFromDraft(raw as string)
   return { path, raw: raw as string, ...meta }
