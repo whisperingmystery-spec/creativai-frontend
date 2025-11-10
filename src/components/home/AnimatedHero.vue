@@ -105,10 +105,10 @@ onBeforeUnmount(() => {
       <!-- Copy -->
       <div class="space-y-6">
         <h1 ref="headlineRef" class="text-4xl font-semibold leading-tight text-slate-100 md:text-5xl">
-          Every tool you need — in one place
+          Every tool you need, in one place
         </h1>
         <p ref="subRef" class="max-w-2xl text-base text-slate-400 md:text-lg">
-          Compress images, generate passwords, create QR codes, calculate percentages, make invoices, and count words. 100% free. Browser-based. No data stored.
+          Compress images, generate passwords, create QR codes, calculate percentages, make invoices, and count words. 100% free. 100% secure. No data stored.
         </p>
         <div ref="ctaRef" class="flex flex-col gap-3 sm:flex-row sm:items-center">
           <RouterLink

@@ -87,7 +87,7 @@ const handleSignOut = async () => { await auth.signOut() }
               </div>
             </div>
             <p class="text-sm text-slate-400">
-              Premium AI-powered image tools for modern agencies. Compress, enhance, and ship visuals at lightning speed with zero compromise.
+              Premium AI-powered tools for modern teams. Compress, create, and calculate at lightning speed with zero compromise.
             </p>
             <div class="flex flex-col gap-1 text-sm text-slate-400">
               <p>Email: <a href="mailto:team@creativaiagency.com" class="text-slate-200 hover:text-brand-accent">team@creativaiagency.com</a></p>
@@ -116,7 +116,7 @@ const handleSignOut = async () => { await auth.signOut() }
         </div>
 
         <div class="flex flex-col gap-4 border-t border-slate-800/60 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
-          <p>&copy; {{ new Date().getFullYear() }} CAIA Labs · All rights reserved.</p>
+          <p>&copy; {{ new Date().getFullYear() }} CAIA · All rights reserved.</p>
           <div class="flex flex-wrap items-center gap-4">
             <RouterLink
               v-for="link in legalLinks"

@@ -5,9 +5,9 @@ import AnimatedHero from '@/components/home/AnimatedHero.vue'
 import ToolsIntroBlock from '@/components/home/ToolsIntroBlock.vue'
 
 const heroStats = [
-  { label: 'Avg. savings per image', value: '72%', detail: 'without losing clarity' },
-  { label: 'Tools live today', value: '4', detail: 'more rolling out monthly' },
-  { label: 'Processing speed', value: '<150ms', detail: 'client-side canvas render' }
+  { label: 'Average savings per image', value: '72%', detail: 'without losing clarity' },
+  { label: 'Live tools', value: '100+', detail: 'more rolling out monthly' },
+  { label: 'Experience', value: 'Fast & free', detail: '100% secure · no data stored' }
 ]
 
 const featuredTools = [
@@ -147,25 +147,25 @@ onMounted(() => {
     <AnimatedHero :slides="heroSlides" />
     <ToolsIntroBlock />
 
-    <section class="rounded-[32px] border border-white/10 bg-white/5 p-8 sm:p-10">
+    <section class="rounded-[32px] border border-white/10 bg-gradient-to-br from-brand/10 to-brand-accent/10 p-8 sm:p-10">
       <div class="grid gap-6 sm:grid-cols-3">
         <div
           v-for="stat in heroStats"
           :key="stat.label"
-          class="rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-800/40 p-6 text-center"
+          class="rounded-2xl border border-white/10 bg-slate-800/40 p-6 text-center transition hover:scale-[1.02] hover:border-brand-accent/40"
         >
           <p class="text-sm uppercase tracking-[0.3em] text-slate-400">{{ stat.label }}</p>
           <p class="mt-3 text-3xl font-semibold text-slate-100">{{ stat.value }}</p>
-          <p class="mt-1 text-sm text-slate-500">{{ stat.detail }}</p>
+          <p class="mt-1 text-sm text-slate-300">{{ stat.detail }}</p>
         </div>
       </div>
     </section>
 
     <section class="space-y-12">
       <div class="flex flex-col gap-4 text-center">
-        <h2 class="text-3xl font-semibold text-slate-100 md:text-4xl">Tools launching with CAIA</h2>
+        <h2 class="text-3xl font-semibold text-slate-100 md:text-4xl">Most used tools</h2>
         <p class="mx-auto max-w-2xl text-base text-slate-400 md:text-lg">
-          The platform focuses on premium image optimization with more AI-assisted tools on deck. Hereʼs what you can use first.
+          Popular, dependable, and ready in seconds. All free, fast, and secure.
         </p>
       </div>
       <div class="grid gap-6 md:grid-cols-3">
@@ -200,15 +200,16 @@ onMounted(() => {
 
     <section class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
       <div class="space-y-6">
-        <h2 class="text-3xl font-semibold text-slate-100 md:text-4xl">Workflow built for agencies</h2>
+        <h2 class="text-3xl font-semibold text-slate-100 md:text-4xl">Workflow for agencies & businesses</h2>
         <p class="text-base text-slate-400 md:text-lg">
-          CAIA keeps complex tasks approachable. From drag-and-drop uploads to AI-assisted cleanups, the UI guides your team at every step.
+          We make complex work simple. Offer premium tools and services: chatbot integrations, website builds, AI automation, and custom workflows. Need help?
+          <RouterLink class="text-brand-accent font-medium hover:underline" :to="{ name: 'contact' }">Contact us</RouterLink>.
         </p>
         <ul class="space-y-6">
           <li
             v-for="item in benefits"
             :key="item.title"
-            class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6"
+            class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 transition transform duration-200 hover:scale-[1.02] hover:shadow-glow hover:border-brand-accent/40 hover:bg-slate-800/60"
           >
             <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand/10 text-sm font-semibold text-brand">
               ✓
@@ -254,7 +255,7 @@ onMounted(() => {
           :key="testimonial.author"
           class="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-800/40 p-6"
         >
-          <blockquote class="text-sm text-slate-300">“{{ testimonial.quote }}”</blockquote>
+          <blockquote class="text-sm text-slate-300">“{{ testimonial.quote.replace('CreatiVAI', 'CAIA') }}”</blockquote>
           <figcaption class="mt-4 text-xs uppercase tracking-[0.3em] text-slate-500">
             {{ testimonial.author }} · {{ testimonial.role }}
           </figcaption>
