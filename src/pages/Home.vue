@@ -13,21 +13,24 @@ const heroStats = [
 const featuredTools = [
   {
     title: 'Image Compressor',
-    description: 'Adjust quality from 40-100 with instant before/after previews and precise size deltas.',
+    description: 'Reduce PNG, JPG, WEBP, and GIF file sizes by up to 80% without quality loss. Everything runs locally in your browser—no uploads.',
     badge: 'Popular',
-    href: '/tools'
+    to: { name: 'image-optimization-suite', query: { tab: 'compress' } },
+    cta: 'Try Image Compressor'
   },
   {
-    title: 'Format Converter',
-    description: 'Swap between JPG, PNG, and WebP on the fly with batch uploads and auto-naming.',
-    badge: 'New',
-    href: '/tools'
+    title: 'QR Code Generator',
+    description: 'Create branded QR codes with custom colors, center logos, and dynamic links. Download print-ready PNG or SVG files instantly.',
+    badge: 'Free forever',
+    to: { name: 'qr-code-generator' },
+    cta: 'Try QR Code Generator'
   },
   {
-    title: 'Background Remover',
-    description: 'API-ready background removal with alpha channel exports and bulk queues.',
-    badge: 'Coming soon',
-    href: '/tools'
+    title: 'Invoice Creator',
+    description: 'Build professional invoices with your branding in under two minutes. Export polished PDFs and track payment status with ease.',
+    badge: 'Business favorite',
+    to: { name: 'receipt-generator' },
+    cta: 'Create an Invoice'
   }
 ]
 
@@ -86,45 +89,45 @@ const heroSlides = [
   {
     id: 'compress',
     title: 'Image Compressor',
-    summary: 'Reduce file size by up to 80% with advanced encoders. Drag, set quality, export.',
+    summary: 'Shrink PNG, JPG, WEBP, and GIF files by up to 80% with zero quality loss. All processing happens locally—no uploads, no waiting.',
     to: { name: 'image-optimization-suite', query: { tab: 'compress' } },
     badge: 'Popular'
   },
   {
     id: 'convert',
     title: 'Format Converter',
-    summary: 'JPG, PNG, WebP, AVIF — switch formats without quality loss.',
+    summary: 'Convert between JPG, PNG, WEBP, and AVIF instantly. Keep fidelity while preparing assets for any platform.',
     to: { name: 'image-optimization-suite', query: { tab: 'convert' } },
     badge: 'New'
   },
   {
     id: 'optimize',
     title: 'Lossless Optimizer',
-    summary: 'Palette reduction for PNGs and lossless clean-up for assets.',
+    summary: 'Clean PNG palettes, strip metadata, and deliver pixel-perfect assets that stay lightweight.',
     to: { name: 'image-optimization-suite', query: { tab: 'optimize' } }
   },
   {
     id: 'qr',
     title: 'QR Code Generator',
-    summary: 'Create QR for links, text, phone, email, or image with center overlay.',
+    summary: 'Create branded QR codes with colors, logos, and dynamic tracking links in seconds.',
     to: { name: 'qr-code-generator' }
   },
   {
     id: 'sip',
     title: 'SIP Calculator',
-    summary: 'Project corpus for monthly SIP and optional lump‑sum with expense ratio.',
+    summary: 'Project SIP growth with expense ratios, inflation, and optional lump sums—output ready to share.',
     to: { name: 'sip-calculator' }
   },
   {
     id: 'emi',
     title: 'EMI Calculator',
-    summary: 'Compute monthly EMI, total interest, and download amortization CSV.',
+    summary: 'Calculate EMI, total interest, and export full amortization schedules with one click.',
     to: { name: 'emi-calculator' }
   },
   {
     id: 'case',
     title: 'Text Case Converter',
-    summary: 'UPPERCASE, Title, snake_case, SCREAMING_SNAKE — instant conversion.',
+    summary: 'Flip text between Title Case, snake_case, camelCase, and more instantly—no manual editing.',
     to: { name: 'text-case-converter' }
   }
 ]
@@ -181,14 +184,17 @@ onMounted(() => {
             <h3 class="text-2xl font-semibold text-slate-100">{{ tool.title }}</h3>
             <p class="text-sm text-slate-400">{{ tool.description }}</p>
           </div>
-          <a
-            :href="tool.href"
-            class="inline-flex items-center gap-2 text-sm font-medium text-brand-accent transition group-hover:gap-3"
+          <RouterLink
+            :to="tool.to"
+            class="inline-flex items-center gap-2 text-sm font-medium text-brand-accent transition group-hover:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent rounded-full px-3 py-2 w-fit"
           >
-            View details
+            {{ tool.cta }}
             <span aria-hidden="true">→</span>
-          </a>
+          </RouterLink>
         </article>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/40 to-slate-800/30 p-6 text-center text-sm text-slate-300">
+        Looking for more? <RouterLink class="font-semibold text-brand-accent hover:underline" :to="{ name: 'tools' }">Explore all CAIA tools →</RouterLink>
       </div>
     </section>
 

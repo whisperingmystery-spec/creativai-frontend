@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
           Every tool you need — in one place
         </h1>
         <p ref="subRef" class="max-w-2xl text-base text-slate-400 md:text-lg">
-          From images to documents, from measurement &amp; units to finance and design — A‑Z tools built for businesses and individuals. Client‑side, private, and instant.
+          Compress images, generate passwords, create QR codes, calculate percentages, make invoices, and count words. 100% free. Browser-based. No data stored.
         </p>
         <div ref="ctaRef" class="flex flex-col gap-3 sm:flex-row sm:items-center">
           <RouterLink
@@ -173,7 +173,7 @@ onBeforeUnmount(() => {
                   </li>
                 </ul>
                 <span class="inline-flex items-center gap-2 text-sm font-medium text-brand-accent">
-                  Open tool
+                  Try {{ currentSlide.title }}
                   <span aria-hidden="true">→</span>
                 </span>
               </RouterLink>

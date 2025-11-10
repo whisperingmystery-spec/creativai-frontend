@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
   links: {
@@ -50,6 +51,21 @@ const handleAuth = () => {
   }
   closeMenu()
 }
+
+const route = useRoute()
+const isActive = (link) => {
+  if (!link) return false
+  if (typeof link.to === 'string') {
+    if (link.to === '/') {
+      return route.path === '/'
+    }
+    return route.path.startsWith(link.to)
+  }
+  if (link.to?.name) {
+    return route.name === link.to.name
+  }
+  return false
+}
 </script>
 
 <template>
@@ -78,7 +94,7 @@ const handleAuth = () => {
           :key="link.label"
           :to="link.to"
           class="rounded-full px-3 py-2 transition hover:bg-slate-800/80 hover:text-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
-          active-class="bg-slate-800/80 text-slate-100"
+          :class="isActive(link) ? 'bg-slate-800/80 text-slate-100' : ''"
           @click.native="handleLinkClick(link)"
         >
           {{ link.label }}
@@ -151,7 +167,7 @@ const handleAuth = () => {
             :to="link.to"
             class="rounded-xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
             @click.native="handleLinkClick(link)"
-            active-class="bg-slate-800/70 text-slate-100"
+            :class="isActive(link) ? 'bg-slate-800/70 text-slate-100' : ''"
           >
             {{ link.label }}
           </RouterLink>
