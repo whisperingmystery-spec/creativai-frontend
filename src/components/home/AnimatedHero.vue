@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
     <div ref="blobA" class="pointer-events-none absolute -left-12 top-0 h-56 w-56 rounded-full bg-brand/15 blur-3xl sm:h-72 sm:w-72"></div>
     <div ref="blobB" class="pointer-events-none absolute right-0 top-10 h-48 w-48 rounded-full bg-brand-accent/20 blur-3xl sm:right-8 sm:h-64 sm:w-64"></div>
 
-    <div ref="blockRef" class="relative grid gap-10 sm:grid-cols-[1.15fr_0.85fr] sm:items-center w-full">
+    <div ref="blockRef" class="relative grid gap-10 sm:grid-cols-[1.15fr_1.7fr] sm:items-center w-full">
       <!-- Copy -->
       <div class="space-y-6">
         <h1 ref="headlineRef" class="text-4xl font-semibold leading-tight text-slate-100 md:text-5xl">
@@ -127,11 +127,11 @@ onBeforeUnmount(() => {
       </div>
 
       <!-- Featured tools carousel -->
-      <div class="relative hidden sm:block">
-        <div class="absolute inset-0 -z-10 rounded-[28px] bg-gradient-to-br from-white/5 to-white/0 ring-1 ring-white/10"></div>
-        <div class="p-4">
+      <div class="relative hidden sm:flex justify-center">
+        <div class="absolute inset-0 -z-10 rounded-[36px] bg-gradient-to-br from-white/5 to-white/0 ring-1 ring-white/10"></div>
+        <div class="w-full max-w-xl p-6 sm:p-8">
           <div
-            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6"
+            class="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-10 min-h-[360px]"
             @mouseenter="stopAutoAdvance"
             @mouseleave="startAutoAdvance"
           >
