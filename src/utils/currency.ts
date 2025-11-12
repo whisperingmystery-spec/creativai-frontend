@@ -16,11 +16,29 @@ export const formatCurrency = (value: number, code: CurrencyCode) => {
     return new Intl.NumberFormat(locale, { style: 'currency', currency: code, maximumFractionDigits: 2 }).format(value)
   } catch {
     // Fallback
-    const symbol = code === 'INR' ? '₹' : code === 'USD' ? '$' : code === 'EUR' ? '€' : code === 'GBP' ? '£' : ''
+    const symbol = getCurrencySymbol(code)
     return `${symbol} ${value.toFixed(2)}`
   }
 }
 
 export const supportedCurrencies: CurrencyCode[] = ['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'JPY']
+
+const symbols: Record<CurrencyCode, string> = {
+  INR: '₹',
+  USD: '$',
+  EUR: '€',
+  GBP: '£',
+  AUD: 'A$',
+  CAD: 'C$',
+  JPY: '¥'
+}
+
+export const getCurrencySymbol = (code: CurrencyCode): string => {
+  return symbols[code] || code
+}
+
+export const isSupportedCurrency = (code: string): code is CurrencyCode => {
+  return supportedCurrencies.includes(code as CurrencyCode)
+}
 
 

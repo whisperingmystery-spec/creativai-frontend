@@ -31,6 +31,7 @@ import ClientManagerPage from '@/pages/tools/ClientManagerPage.vue'
 import GstCalculatorPage from '@/pages/tools/GstCalculatorPage.vue'
 import PLStatementPage from '@/pages/tools/PLStatementPage.vue'
 import USSalesTaxCalculatorPage from '@/pages/tools/USSalesTaxCalculatorPage.vue'
+import ImportCostPricingCalculatorPage from '@/pages/tools/ImportCostPricingCalculatorPage.vue'
 import Privacy from '@/pages/legal/Privacy.vue'
 import Terms from '@/pages/legal/Terms.vue'
 import Cookies from '@/pages/legal/Cookies.vue'
@@ -51,6 +52,7 @@ const routes = [
   { path: '/tools/sip-calculator', name: 'sip-calculator', component: SipCalculatorPage },
   { path: '/tools/profit-calculator', name: 'profit-calculator', component: ProfitCalculatorPage },
   { path: '/tools/index-fund-calculator', name: 'index-fund-calculator', component: IndexFundCalculatorPage },
+  { path: '/tools/import-cost-pricing', name: 'import-cost-pricing', component: ImportCostPricingCalculatorPage },
   { path: '/auth/sign-in', name: 'sign-in', component: SignIn },
   { path: '/auth/sign-up', name: 'sign-up', component: SignUp },
   { path: '/auth/callback', name: 'auth-callback', component: AuthCallback },

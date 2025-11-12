@@ -105,24 +105,31 @@ onBeforeUnmount(() => {
       <!-- Copy -->
       <div class="space-y-6">
         <h1 ref="headlineRef" class="text-4xl font-semibold leading-tight text-slate-100 md:text-5xl">
-          Every tool you need, in one place
+          Every day-use tool, in your browser.
         </h1>
         <p ref="subRef" class="max-w-2xl text-base text-slate-400 md:text-lg">
-          Compress images, generate passwords, create QR codes, calculate percentages, make invoices, and count words. 100% free. 100% secure. No data stored.
+          Compress images, generate passwords, create QR codes, and more - fast, private, and free. No uploads.
         </p>
         <div ref="ctaRef" class="flex flex-col gap-3 sm:flex-row sm:items-center">
           <RouterLink
-            :to="{ name: 'image-optimization-suite' }"
+            :to="{ name: 'tools' }"
             class="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-accent px-6 py-3 text-sm font-medium text-white shadow-glow transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
           >
-            Launch Optimization Suite
+            Open Tools Hub
           </RouterLink>
           <RouterLink
-            :to="{ name: 'tools' }"
+            :to="{ name: 'qr-code-generator' }"
             class="inline-flex items-center justify-center rounded-full border border-slate-700/70 px-6 py-3 text-sm font-medium text-slate-200 transition hover:border-brand-accent hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
           >
-            Browse all tools
+            Try QR Code Generator
           </RouterLink>
+        </div>
+        <p class="text-sm font-medium text-slate-300">Private by design - files stay on your device.</p>
+        <div class="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-200">
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">🔧 100+ daily-use tools</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">⚡ Instant, in-browser processing</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">💸 Free forever - no watermarks</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2">🖥️ Works on any device</span>
         </div>
       </div>
 

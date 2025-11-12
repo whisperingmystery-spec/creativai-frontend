@@ -12,10 +12,19 @@ const chips = [
   { id: 'brand', label: 'Brand Systems' },
   { id: 'utilities', label: 'Utilities' },
   { id: 'finance', label: 'Finance' },
-  { id: 'business', label: 'Business' }
+  { id: 'business', label: 'Business' },
+  { id: 'ecommerce', label: 'E-commerce' }
 ]
 
 const tools = [
+  {
+    id: 'import-cost-pricing',
+    name: 'Import Cost & Retail Pricing',
+    summary: 'Landed cost breakdowns, markup presets, and profit projections for imported goods.',
+    tags: ['ecommerce', 'business'],
+    badge: 'New',
+    route: { name: 'import-cost-pricing' }
+  },
   {
     id: 'compressor',
     name: 'Compress Image',
