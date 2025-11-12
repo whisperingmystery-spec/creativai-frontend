@@ -87,7 +87,7 @@ const handleSignOut = async () => { await auth.signOut() }
               </div>
             </div>
             <p class="text-sm text-slate-400">
-              Premium AI-powered tools for modern teams. Compress, create, and calculate at lightning speed with zero compromise.
+              Premium AI-powered tools for modern teams - private, fast, and free.
             </p>
             <div class="flex flex-col gap-1 text-sm text-slate-400">
               <p>Email: <a href="mailto:team@creativaiagency.com" class="text-slate-200 hover:text-brand-accent">team@creativaiagency.com</a></p>
