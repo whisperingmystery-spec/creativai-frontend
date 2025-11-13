@@ -31,6 +31,13 @@ const featuredTools = [
     badge: 'Business favorite',
     to: { name: 'receipt-generator' },
     cta: 'Create an Invoice'
+  },
+  {
+    title: 'Brand Identity Generator',
+    description: 'Compose industry-specific palettes, typography, and messaging with live previews and downloadable brand guidelines.',
+    badge: 'New',
+    to: { name: 'brand-identity-generator' },
+    cta: 'Design a Brand System'
   }
 ]
 
@@ -152,6 +159,13 @@ const heroSlides = [
     title: 'Text Case Converter',
     summary: 'Flip text between Title Case, snake_case, camelCase, and more instantly - no manual editing.',
     to: { name: 'text-case-converter' }
+  },
+  {
+    id: 'brand',
+    title: 'Brand Identity Generator',
+    summary: 'Generate color palettes, typography, and PDF guidelines tailored to your industry in seconds.',
+    to: { name: 'brand-identity-generator' },
+    badge: 'New'
   }
 ]
 

@@ -18,6 +18,14 @@ const chips = [
 
 const tools = [
   {
+    id: 'brand-identity-generator',
+    name: 'Brand Identity Generator',
+    summary: 'Build color palettes, typography, and guidelines tailored to your industry.',
+    tags: ['ecommerce', 'business', 'brand'],
+    badge: 'New',
+    route: { name: 'brand-identity-generator' }
+  },
+  {
     id: 'import-cost-pricing',
     name: 'Import Cost & Retail Pricing',
     summary: 'Landed cost breakdowns, markup presets, and profit projections for imported goods.',
